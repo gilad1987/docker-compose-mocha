@@ -1,5 +1,5 @@
 {
-  "name": "ni-docker-compose-tool",
+  "name": "docker-compose-tool",
   "version": "1.0.11",
   "description": "Tool used for setting up an isolated environment for end to end testing / integration testing using Docker Compose",
   "main": "index.js",

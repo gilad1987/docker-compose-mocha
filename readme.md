@@ -3,15 +3,21 @@
 # Docker Compose Tool
 
 A tool used to create an isolated environment for services which are Docker-ized
-based on services found inside a given docker-compose.yml file when running Docker Compose tool.
+based on services found inside a given docker-compose.yml file when run through the Docker Compose binary.
 
 This can be particularly useful when you want to setup other services with end to end testing before your application starts to run it's test suite.
 
 One thing to note: this tool is meant to be used with any testing framework (not necessarily Mocha) although the following examples
 are based on Mocha (due to it's popularity).
 
+## Node versions supported
+This package supports Node v6 and higher
+
 ## Purpose
-This package is solely for testing purposes.
+This package is solely for testing purposes for building CI/CD pipelines using Docker and can be used
+in combination with any language as long as your service is wrapped in a Docker image.
+
+You will however need to orchestrate your CI/CD flow using Node (and possibly bash/zsh)
 
 ## Installation
 Inside your project directory type the following code:
@@ -89,10 +95,10 @@ Consider the following Javascript code which is supposed to be placed in your en
 ```js
 
 const {before, after} = require('mocha');
-const dct = require('docker-compose-tool');
+const {dockerComposeTool} = require('docker-compose-tool');
 const pathToCompose = './docker-compose.yml';
 
-const envName = dct.dockerComposeTool(before, after, pathToCompose);
+const envName = dockerComposeTool(before, after, pathToCompose);
   
 ```
 
@@ -107,15 +113,15 @@ Please consider the following code
 ```js
 
 const {before, after} = require('mocha');
-const dct = require('ni-docker-compose-tool');
+const {dockerComposeTool, getAddressForService} = require('docker-compose-tool');
 const pathToCompose = './docker-compose.yml';
 
-const envName = dct.dockerComposeTool(before, after, pathToCompose);
+const envName = dockerComposeTool(before, after, pathToCompose);
 
 const serviceName = 'service1';
 const originalPort = 3002;
 
-dct.getRandomPortForService(envName, pathToCompose, serviceName, originalPort)
+getAddressForService(envName, pathToCompose, serviceName, originalPort)
     .then((result) => {
         console.log(result); // => '0.0.0.0:36589'
     });
@@ -190,7 +196,7 @@ Here's an example code of the service checking ability:
 ```js
 
 const {before, after} = require('mocha');
-const dct = require('ni-docker-compose-tool');
+const {dockerComposeTool} = require('docker-compose-tool');
 const pathToCompose = './docker-compose.yml';
 const options = {
     healthCheck: {
@@ -206,7 +212,7 @@ const options = {
     }
 };
 
-const envName = dct.dockerComposeTool(before, after, pathToCompose);
+const envName = dockerComposeTool(before, after, pathToCompose);
   
 ```
 
