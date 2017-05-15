@@ -1,5 +1,5 @@
 {
-  "name": "docker-compose-tool",
+  "name": "docker-compose-mocha",
   "version": "1.0.11",
   "description": "Tool used for setting up an isolated environment for end to end testing / integration testing using Docker Compose",
   "main": "index.js",
@@ -15,8 +15,8 @@
     "url": "git+https://github.com/Natural-Intelligence/docker-compose-tool.git",
     "private": true
   },
-  "author": "Infra Team",
-  "license": "ISC",
+  "author": "Itamar Arjuan",
+  "license": "MIT",
   "dependencies": {
     "bluebird": "^3.4.6",
     "chalk": "^1.1.3",

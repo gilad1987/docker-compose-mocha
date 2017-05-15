@@ -1,6 +1,6 @@
-<img src="ni-eng-strip.jpg" alt="NI Engineering">
+<img src="https://umbrella.s3.naturalint.com/opensource/docker-compose-mocha/ni-eng-strip.jpg" alt="NI Engineering">
 
-# Docker Compose Tool
+# Docker Compose Mocha
 
 A tool used to create an isolated environment for services which are Docker-ized
 based on services found inside a given docker-compose.yml file when run through the Docker Compose binary.
@@ -24,12 +24,12 @@ Inside your project directory type the following code:
 
 ### When using npm
 ```bash
-$ npm i docker-compose-tool --save-dev 
+$ npm i docker-compose-mocha --save-dev 
 ```
 
 ### When using yarn
 ```bash
-$ yarn add docker-compose-tool --dev 
+$ yarn add docker-compose-mocha --dev 
 ```
 
 ## Cleanup logic
@@ -95,7 +95,7 @@ Consider the following Javascript code which is supposed to be placed in your en
 ```js
 
 const {before, after} = require('mocha');
-const {dockerComposeTool} = require('docker-compose-tool');
+const {dockerComposeTool} = require('docker-compose-mocha');
 const pathToCompose = './docker-compose.yml';
 
 const envName = dockerComposeTool(before, after, pathToCompose);
@@ -113,7 +113,7 @@ Please consider the following code
 ```js
 
 const {before, after} = require('mocha');
-const {dockerComposeTool, getAddressForService} = require('docker-compose-tool');
+const {dockerComposeTool, getAddressForService} = require('docker-compose-mocha');
 const pathToCompose = './docker-compose.yml';
 
 const envName = dockerComposeTool(before, after, pathToCompose);
@@ -187,7 +187,7 @@ for all Natural Intelligence services (counting on the service to have a /health
 
 Notice in the last example we have a `healthCheck` property inside the `options` object which
 has two properties. Once the entire `healthCheck` object is supplied and state set to `true`
-the Docker Compose tool will automatically scan all services available under your Compose yaml file
+the Docker Compose Mocha will automatically scan all services available under your Compose yaml file
 and will service check their availability using a simple HTTP GET health checker under the route
 of `http://0.0.0.0:XXXX/healthcheck` - `XXXX` being the random port of your service.
 
@@ -196,7 +196,7 @@ Here's an example code of the service checking ability:
 ```js
 
 const {before, after} = require('mocha');
-const {dockerComposeTool} = require('docker-compose-tool');
+const {dockerComposeTool} = require('docker-compose-mocha');
 const pathToCompose = './docker-compose.yml';
 const options = {
     healthCheck: {
