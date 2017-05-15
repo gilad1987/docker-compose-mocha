@@ -10,6 +10,8 @@ This can be particularly useful when you want to setup other services with end t
 One thing to note: this tool is meant to be used with any testing framework (not necessarily Mocha) although the following examples
 are based on Mocha (due to it's popularity).
 
+Docker and CI/CD are incredibly important for us at <a target="_blank" href="http://naturalint.com/">Natural Intelligence</a>, as we have a large micro-service oriented system serving listings in more than 100 different fields. In addition, we are also <a href="http://naturalint.com/careers">hiring talented engineers</a> to help us grow as a technological pioneers
+
 ## Node versions supported
 This package supports Node v6 and higher
 
